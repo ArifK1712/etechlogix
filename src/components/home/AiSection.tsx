@@ -200,7 +200,7 @@ export function AiSection() {
             id="ai-heading"
             className="text-black font-bold text-[34px] sm:text-[46px] lg:text-[clamp(44px,4.5vw,60px)] leading-[1.05] tracking-tight mb-4"
           >
-            From AI experiments to{" "}
+            {" "}
             <span className="text-[#df012a]">production-ready intelligence.</span>
           </h2>
           <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
