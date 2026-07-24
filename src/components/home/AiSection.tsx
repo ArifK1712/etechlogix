@@ -24,7 +24,7 @@ import {
   Activity,
 } from "lucide-react";
 
-interface AgenticTab {
+export interface AgenticTab {
   id: string;
   num: string;
   tabLabel: string;
@@ -38,7 +38,7 @@ interface AgenticTab {
   imageAlt: string;
 }
 
-const agenticTabs: AgenticTab[] = [
+export const agenticTabs: AgenticTab[] = [
   {
     id: "workflow-automation",
     num: "01",
@@ -98,20 +98,20 @@ const agenticTabs: AgenticTab[] = [
     title: "HIPAA-Compliant Healthcare Workflow Agents",
     problem: "Complex patient intake processing, insurance verification delays, and administrative record fragmentation.",
     agentAction: "Validates patient eligibility, processes intake documentation, cross-references coverage policies, and updates EHRs securely.",
-    connectedSystems: "EHR/EMR Platforms, Insurance Verification APIs, HIPAA Storage",
-    humanApproval: "Clinical discrepancies or coverage exceptions escalated to healthcare staff.",
-    businessOutcome: "Reduced patient onboarding wait times and error-free record management.",
-    imageSrc: "/industry-healthcare.png",
+    connectedSystems: "Epic EHR, Cerner, Clearinghouses, Secure Patient Portals",
+    humanApproval: "Clinical discrepancies or insurance eligibility exceptions routed to medical staff.",
+    businessOutcome: "Faster patient processing with guaranteed HIPAA compliance and auditability.",
+    imageSrc: "/showcase-docintel.png",
     imageAlt: "Healthcare Workflow Agent visual",
   },
   {
     id: "event-operations",
     num: "06",
     tabLabel: "Event Operations Agents",
-    title: "High-Concurrency Event Operations Agents",
-    problem: "High-concurrency attendee registrations, badge printing logistics, and schedule change coordination.",
-    agentAction: "Manages live registration feeds, reconciles attendee badges, coordinates vendor logistics, and triggers real-time updates.",
-    connectedSystems: "Event Platforms, Barcode APIs, Mobile Event Apps, Payment Systems",
+    title: "Real-Time Event Operations Agents",
+    problem: "High-volume attendee registration, badge generation, access control, and live schedule sync for enterprise conferences.",
+    agentAction: "Validates registrations, syncs ticketing data, triggers automated badge printing, and manages gate access control.",
+    connectedSystems: "EventBrite, Cvent, Custom Badge Printers, RFID Gates",
     humanApproval: "On-site VIP changes or emergency schedule overrides require event director approval.",
     businessOutcome: "Zero-downtime event operations supporting thousands of concurrent attendees.",
     imageSrc: "/industry-events.png",
@@ -122,7 +122,7 @@ const agenticTabs: AgenticTab[] = [
 /* ─── DYNAMIC VISUAL CANVAS COMPONENTS ─── */
 
 /** 1. Workflow Automation Visual Canvas **/
-function WorkflowAutomationVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function WorkflowAutomationVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -226,7 +226,7 @@ function WorkflowAutomationVisual({ isReducedMotion }: { isReducedMotion: boolea
 }
 
 /** 2. Document Processing Visual Canvas **/
-function DocumentProcessingVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function DocumentProcessingVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -341,7 +341,7 @@ function DocumentProcessingVisual({ isReducedMotion }: { isReducedMotion: boolea
 }
 
 /** 3. Connected Systems Visual Canvas **/
-function ConnectedSystemsVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function ConnectedSystemsVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -422,7 +422,7 @@ function ConnectedSystemsVisual({ isReducedMotion }: { isReducedMotion: boolean 
 }
 
 /** 4. Approval Exception Visual Canvas **/
-function ApprovalExceptionVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function ApprovalExceptionVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -516,7 +516,7 @@ function ApprovalExceptionVisual({ isReducedMotion }: { isReducedMotion: boolean
 }
 
 /** 5. Healthcare Workflow Visual Canvas **/
-function HealthcareWorkflowVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function HealthcareWorkflowVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -624,7 +624,7 @@ function HealthcareWorkflowVisual({ isReducedMotion }: { isReducedMotion: boolea
 }
 
 /** 6. Event Operations Visual Canvas **/
-function EventOperationsVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
+export function EventOperationsVisual({ isReducedMotion }: { isReducedMotion: boolean }) {
   return (
     <div className="w-full h-full flex flex-col justify-between space-y-3 relative overflow-hidden select-none">
       {/* Top Architectural Header */}
@@ -893,7 +893,7 @@ export function AiSection() {
           <div ref={containerRef} className="overflow-hidden flex-1 relative">
             <div
               ref={trackRef}
-              className="flex items-center gap-4 transition-transform duration-500 ease-out flex-nowrap"
+              className="flex items-center gap-8 transition-transform duration-500 ease-out flex-nowrap"
               style={{ transform: `translateX(-${translateOffset}px)` }}
               role="tablist"
               aria-label="Agentic AI tabs navigation"
@@ -908,7 +908,7 @@ export function AiSection() {
                     aria-selected={isActive}
                     aria-controls={`agentic-panel-${item.id}`}
                     onClick={() => setActiveIdx(i)}
-                    className={`flex items-center gap-2 py-2 px-3 text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 border-b-2 flex-shrink-0 cursor-pointer whitespace-nowrap ${
+                    className={`flex items-center gap-2 py-2 px-0 text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 border-b-2 flex-shrink-0 cursor-pointer whitespace-nowrap ${
                       isActive
                         ? "border-[#df012a] text-black font-bold"
                         : "border-transparent text-gray-500 hover:text-gray-900"
