@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Brain,
   Code2,
@@ -90,13 +91,13 @@ export function ServicesSection() {
 
                   {/* CTA Link */}
                   <div className="pt-4 border-t border-white/15">
-                    <a
+                    <Link
                       href={service.href}
                       className="inline-flex items-center gap-2 text-xs font-bold text-[#df012a] hover:text-white transition-colors group-hover:gap-3"
                       aria-label={`Explore ${service.title}`}
                     >
                       Explore Agentic AI Solutions <ArrowRight size={14} />
-                    </a>
+                    </Link>
                   </div>
                 </article>
               );
@@ -115,7 +116,7 @@ export function ServicesSection() {
                   <div className="w-11 h-11 bg-[#fbeaec] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#df012a] transition-colors duration-300">
                     <Icon
                       size={20}
-                      className="text-[#df012a] group-hover:text-white transition-colors duration-300"
+                      className="text-[#df012a] group-hover:text-[#df012a] transition-colors duration-300"
                     />
                   </div>
 
@@ -132,13 +133,13 @@ export function ServicesSection() {
 
                 {/* CTA Link */}
                 <div className="pt-4 border-t border-gray-100">
-                  <a
+                  <Link
                     href={service.href}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#df012a] group-hover:gap-2.5 transition-all duration-200"
                     aria-label={`Learn more about ${service.title}`}
                   >
                     Learn more <ArrowRight size={13} />
-                  </a>
+                  </Link>
                 </div>
               </article>
             );

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -163,13 +164,13 @@ export function Header() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a
+            <Link
               href="/"
               className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] rounded"
               aria-label="eTechLogix — Home"
             >
               <Image src="/logo.png" alt="eTechLogix Logo" width={150} height={50} className="h-8 w-auto sm:h-15" />
-            </a>
+            </Link>
 
             {/* Desktop Nav with Accessible Multi-level Dropdowns */}
             <nav
@@ -186,16 +187,15 @@ export function Header() {
                     onMouseEnter={() => handleMouseEnter(category.id)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <a
+                    <Link
                       href={category.href}
                       className={`inline-flex items-center gap-1 px-4 py-2 rounded-md text-white transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] ${
                         isOpen ? "text-[#df012a] bg-white/10" : "hover:text-[#df012a] hover:bg-white/10"
                       }`}
                       aria-expanded={isOpen}
                       aria-controls={`dropdown-${category.id}`}
-                      onClick={(e) => {
-                        // Allow direct navigation if clicked or toggle on keyboard focus
-                        if (isOpen) setActiveDropdown(null);
+                      onClick={() => {
+                        setActiveDropdown(null);
                       }}
                     >
                       <span>{category.label}</span>
@@ -205,7 +205,7 @@ export function Header() {
                           isOpen ? "rotate-180 text-[#df012a]" : "text-gray-400"
                         }`}
                       />
-                    </a>
+                    </Link>
 
                     {/* Desktop Dropdown Panel */}
                     <div
@@ -221,7 +221,7 @@ export function Header() {
                     >
                       <div className="bg-[#0a0a0a]/95 border border-white/10 backdrop-blur-xl shadow-2xl rounded-2xl p-2 space-y-0.5">
                         {category.items.map((item) => (
-                          <a
+                          <Link
                             key={item.href}
                             href={item.href}
                             role="menuitem"
@@ -229,7 +229,7 @@ export function Header() {
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -280,9 +280,9 @@ export function Header() {
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-          <a href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
             <Image src="/logo.png" alt="eTechLogix Logo" width={130} height={42} className="h-7 w-auto" />
-          </a>
+          </Link>
           <button
             type="button"
             className="p-2 rounded-lg text-white hover:text-[#df012a] hover:bg-white/10 transition-colors focus-visible:outline-none"
@@ -300,13 +300,13 @@ export function Header() {
             return (
               <div key={category.id} className="border-b border-white/5 pb-1">
                 <div className="flex items-center justify-between">
-                  <a
+                  <Link
                     href={category.href}
                     className="flex-1 py-3 px-3 text-base font-bold text-white hover:text-[#df012a] transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     {category.label}
-                  </a>
+                  </Link>
                   <button
                     type="button"
                     className="p-3 text-gray-400 hover:text-white transition-colors"
@@ -327,14 +327,14 @@ export function Header() {
                 {isExpanded && (
                   <div className="pl-4 pr-2 pb-2 space-y-1 bg-white/5 rounded-xl py-2 my-1">
                     {category.items.map((subItem) => (
-                      <a
+                      <Link
                         key={subItem.href}
                         href={subItem.href}
                         className="block py-2 px-3 text-xs font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                         onClick={() => setMobileOpen(false)}
                       >
                         {subItem.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -358,7 +358,7 @@ export function Header() {
 
         {/* Drawer Footer */}
         <div className="px-6 py-5 border-t border-white/10 text-center text-xs text-white/40">
-          © eTechLogix LLC. All rights reserved.
+          © {new Date().getFullYear()} eTechLogix LLC. All rights reserved.
         </div>
       </div>
     </>

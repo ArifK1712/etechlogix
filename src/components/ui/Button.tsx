@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost";
@@ -14,6 +15,7 @@ export function Button({
   children,
   href,
   className = "",
+  type = "button",
   ...props
 }: ButtonProps) {
   const base =
@@ -37,15 +39,30 @@ export function Button({
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
+    const isExternalOrAnchor =
+      href.startsWith("#") ||
+      href.startsWith("http://") ||
+      href.startsWith("https://") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:");
+
+    if (isExternalOrAnchor) {
+      return (
+        <a href={href} className={classes}>
+          {children}
+        </a>
+      );
+    }
+
     return (
-      <a href={href} className={classes}>
+      <Link href={href} className={classes}>
         {children}
-      </a>
+      </Link>
     );
   }
 
   return (
-    <button className={classes} {...props}>
+    <button type={type} className={classes} {...props}>
       {children}
     </button>
   );

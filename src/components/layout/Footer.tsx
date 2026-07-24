@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // Inline SVGs for social icons (lucide-react dropped Linkedin/Twitter in v0.400+)
 function LinkedinIcon({ size = 16 }: { size?: number }) {
@@ -55,12 +57,9 @@ export function Footer() {
             <p className="text-white font-semibold text-lg">Ready to build something intelligent?</p>
             <p className="text-gray-400 text-base mt-1">Let&apos;s start with a conversation.</p>
           </div>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#df012a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8001f] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-          >
+          <Button variant="primary" size="md" href="/contact">
             Discuss Your Project <ArrowUpRight size={16} />
-          </a>
+          </Button>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Brand column */}
@@ -118,12 +117,12 @@ export function Footer() {
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link.href}>
-                      <a
+                      <Link
                         href={link.href}
                         className="text-sm text-gray-400 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#df012a] rounded"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -142,12 +141,12 @@ export function Footer() {
             © {year} eTechLogix LLC. All rights reserved.
           </p>
           <div className="flex gap-5">
-            <a href="/privacy" className="hover:text-gray-200 text-gray-400 transition-colors">
+            <Link href="/privacy" className="hover:text-gray-200 text-gray-400 transition-colors">
               Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-gray-200 text-gray-400 transition-colors">
+            </Link>
+            <Link href="/terms" className="hover:text-gray-200 text-gray-400 transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

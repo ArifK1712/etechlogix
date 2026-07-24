@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 
 interface IndustryItem {
@@ -172,12 +173,12 @@ export function IndustriesSection() {
                 <p className="font-medium text-white/90 bg-black/70 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10">
                   {active.description}
                 </p>
-                <a
+                <Link
                   href={active.href}
                   className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#df012a] text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-[#b8001f] transition-all shadow-md flex-shrink-0"
                 >
                   Explore <ArrowRight size={14} />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

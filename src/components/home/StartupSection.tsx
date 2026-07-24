@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface StartupStage {
@@ -109,18 +110,18 @@ export function StartupSection() {
 
         {/* ─── CTAs ─── */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
+          <Link
             href="/contact"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-black text-white text-sm font-bold rounded-xl hover:bg-[#df012a] transition-all duration-200 shadow-md hover:gap-3"
           >
             Build Your Startup Product <ArrowRight size={16} />
-          </a>
-          <a
+          </Link>
+          <Link
             href="/contact"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent text-black text-sm font-bold rounded-xl border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
           >
             Discuss Your Idea
-          </a>
+          </Link>
         </div>
 
       </div>

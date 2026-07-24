@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Bot, Server, Rocket } from "lucide-react";
 
 interface ProofCard {
@@ -118,13 +119,13 @@ export function CaseStudiesSection() {
                     </p>
                   </div>
 
-                  <a
+                  <Link
                     href={card.href}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#df012a] hover:text-black transition-colors"
                   >
                     <span>{card.linkText}</span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             );
@@ -133,12 +134,12 @@ export function CaseStudiesSection() {
 
         {/* ─── UNDERSTATED LINK BELOW CARDS ─── */}
         <div className="text-center pt-2">
-          <a
+          <Link
             href="/work"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-600 hover:text-[#df012a] transition-colors py-2 px-4 rounded-full border border-gray-200 hover:border-[#df012a]/40 bg-gray-50/50"
           >
             View all case studies <ArrowRight size={14} />
-          </a>
+          </Link>
         </div>
 
       </div>

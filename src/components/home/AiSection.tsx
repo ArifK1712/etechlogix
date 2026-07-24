@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -1004,12 +1005,12 @@ export function AiSection() {
 
             {/* Bottom CTA Link */}
             <div className="mt-6 pt-4 border-t border-white/10 text-center">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 text-xs font-bold text-[#df012a] hover:text-white transition-colors"
               >
                 Discuss {active.tabLabel} for Your Enterprise <ArrowRight size={14} />
-              </a>
+              </Link>
             </div>
           </div>
 

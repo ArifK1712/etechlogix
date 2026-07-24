@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface Slide {
   id: number;
@@ -272,18 +273,12 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row gap-3 mb-14 animate-fadeUp"
               style={{ animationDelay: "180ms" }}
             >
-              <a
-                href={slide.primaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#df012a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8001f] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] focus-visible:ring-offset-2"
-              >
+              <Button variant="primary" size="md" href={slide.primaryCta.href}>
                 {slide.primaryCta.label} <ArrowUpRight size={16} />
-              </a>
-              <a
-                href={slide.secondaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-black text-sm font-semibold rounded-lg border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-              >
+              </Button>
+              <Button variant="secondary" size="md" href={slide.secondaryCta.href}>
                 {slide.secondaryCta.label}
-              </a>
+              </Button>
             </div>
 
             {/* ─── Navigation controls ─────────────────────────── */}

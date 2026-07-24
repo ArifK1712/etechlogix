@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 
 export function CtaSection() {
@@ -36,13 +37,13 @@ export function CtaSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
+          <Link
             id="cta-discuss-project"
             href="/contact"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#df012a] font-bold rounded-xl hover:bg-gray-50 transition-colors duration-200 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#df012a] shadow-xl"
           >
             Discuss Your Project <ArrowRight size={18} />
-          </a>
+          </Link>
           <a
             id="cta-email"
             href="mailto:hello@etechlogix.com"

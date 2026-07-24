@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Accordion } from "@/components/ui/Accordion";
 import { faqs } from "@/data/faqs";
@@ -20,12 +21,12 @@ export function FaqSection() {
         <div className="mt-10 text-center">
           <p className="text-gray-500 text-base">
             Still have questions?{" "}
-            <a
+            <Link
               href="/contact"
               className="text-[#df012a] font-semibold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] rounded"
             >
               Get in touch →
-            </a>
+            </Link>
           </p>
         </div>
       </div>

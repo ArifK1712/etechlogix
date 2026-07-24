@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ShieldCheck, Network, Cpu, Database, Server, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface IntegrationGroup {
@@ -166,12 +167,12 @@ export function IntegrationsSection() {
 
         {/* ─── BOTTOM CTA ─── */}
         <div className="mt-12 text-center">
-          <a
+          <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-black text-white text-sm font-bold rounded-xl hover:bg-[#df012a] transition-all duration-200 shadow-md hover:gap-3"
           >
             Discuss an Enterprise Integration <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
       </div>
