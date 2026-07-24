@@ -790,16 +790,17 @@ export function AiSection() {
         const tabWidth = activeTabElem.offsetWidth;
         const containerW = containerRef.current.offsetWidth;
 
-        if (tabLeft + tabWidth > translateOffset + containerW) {
-          const newOffset = Math.min(maxOffset, tabLeft + tabWidth - containerW + 32);
-          setTranslateOffset(newOffset);
-        } else if (tabLeft < translateOffset) {
-          const newOffset = Math.max(0, tabLeft - 32);
-          setTranslateOffset(newOffset);
-        }
+        setTranslateOffset((prev) => {
+          if (tabLeft + tabWidth > prev + containerW) {
+            return Math.min(maxOffset, tabLeft + tabWidth - containerW + 32);
+          } else if (tabLeft < prev) {
+            return Math.max(0, tabLeft - 32);
+          }
+          return prev;
+        });
       }
     }
-  }, [activeIdx, maxOffset, translateOffset]);
+  }, [activeIdx, maxOffset]);
 
   // Arrow Clicks change active tab one at a time
   const handlePrevTab = () => {
@@ -920,7 +921,7 @@ export function AiSection() {
                     >
                       {item.num}
                     </span>
-                    <span className="text-2xl">{item.tabLabel}</span>
+                    <span className="text-lg sm:text-2xl">{item.tabLabel}</span>
                   </button>
                 );
               })}
