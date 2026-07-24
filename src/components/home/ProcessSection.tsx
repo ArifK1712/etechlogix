@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Search, PenTool, Hammer, TrendingUp } from "lucide-react";
+import { Search, PenTool, Hammer, TrendingUp, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,33 +22,33 @@ const stations: AssemblyStation[] = [
   {
     num: "01",
     name: "DISCOVER",
-    title: "Understand the problem deeply",
-    description: "Scattered business goals, user needs, workflows, and system constraints enter the transformation pipeline.",
-    deliverable: "Discovery roadmap",
+    title: "Discover & Align",
+    description: "Understand the business goals, users, workflows, existing systems, operational challenges, risks, security needs, and success criteria.",
+    deliverable: "Discovery & requirements roadmap",
     icon: Search,
   },
   {
     num: "02",
     name: "DESIGN",
-    title: "Architect a clear path forward",
-    description: "Raw inputs transform into structured UX wireframes, system architecture grid, and API data blueprints.",
-    deliverable: "Validated solution blueprint",
+    title: "Architect & Plan",
+    description: "Define the product experience, technical architecture, integrations, data flows, AI responsibilities, security approach, and phased delivery roadmap.",
+    deliverable: "Technical architecture blueprint",
     icon: PenTool,
   },
   {
     num: "03",
     name: "BUILD",
-    title: "Deliver with engineering rigour",
-    description: "Interface modules, databases, and cloud microservices assemble into a production-ready software product.",
-    deliverable: "Production-ready solution",
+    title: "Engineer & Validate",
+    description: "Deliver in controlled iterations with regular demonstrations, testing, documentation, stakeholder reviews, and transparent progress.",
+    deliverable: "Production-ready software build",
     icon: Hammer,
   },
   {
     num: "04",
     name: "IMPROVE",
-    title: "Evolve as your business grows",
-    description: "Live performance telemetry, feedback loops, and continuous feature iterations drive sustained platform growth.",
-    deliverable: "Optimisation roadmap",
+    title: "Evolve & Optimise",
+    description: "Monitor performance, support users, refine workflows, modernise capabilities, and evolve the platform as business needs change.",
+    deliverable: "Continuous optimisation & telemetry",
     icon: TrendingUp,
   },
 ];
@@ -97,7 +97,7 @@ export function ProcessSection() {
     <section
       ref={sectionRef}
       id="process"
-      className="relative z-10 w-full py-15 lg:py-20 bg-black text-white overflow-hidden"
+      className="relative z-10 w-full py-16 lg:py-20 bg-[radial-gradient(circle_at_30%_45%,rgba(223,1,42,0.24),transparent_38%),radial-gradient(circle_at_78%_72%,rgba(120,0,24,0.16),transparent_34%),linear-gradient(135deg,#030303_0%,#22040b_48%,#080808_100%)] text-white overflow-hidden"
       aria-labelledby="process-heading"
     >
       {/* Technical Grid Background */}
@@ -115,25 +115,25 @@ export function ProcessSection() {
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ─── TOP HEADING & INTRODUCTION (WITH CLEAN 64-80px MARGIN BELOW) ─── */}
-        <div className="max-w-[800px]">
+        <div className="max-w-[950px]">
           <span className="inline-flex items-center gap-2 text-[#df012a] text-xs font-bold uppercase tracking-[0.14em] mb-3">
             <span className="w-5 h-px bg-[#df012a]" />
             HOW WE WORK
           </span>
           <h2
             id="process-heading"
-            className="text-white font-bold text-[32px] sm:text-[42px] lg:text-[clamp(38px,3.8vw,52px)] leading-[1.05] tracking-tight mb-4"
+            className="text-white font-bold text-[34px] sm:text-[46px] lg:text-[clamp(42px,4.5vw,58px)] leading-[1.08] tracking-tight mb-4"
           >
-            A delivery approach built{" "}
-            <span className="text-[#df012a]">for real-world complexity.</span>
+            A structured delivery approach for{" "}
+            <span className="text-[#df012a]">complex digital products.</span>
           </h2>
-          <p className="text-white/65 text-base sm:text-lg leading-relaxed">
-            Great software is the product of a disciplined engineering journey. Watch how your business problem moves from discovery to a continuous, self-improving platform.
+          <p className="text-white/65 leading-relaxed max-w-3xl">
+            We combine business understanding, product strategy, enterprise architecture, and iterative engineering to deliver reliable outcomes with clear visibility throughout the engagement.
           </p>
         </div>
 
         {/* ─── DESKTOP PRODUCT ASSEMBLY JOURNEY (Positioned Cleanly Below Introduction) ─── */}
-        <div className="hidden lg:block relative pt-6 pb-6">
+        <div className="hidden lg:block relative pt-4 pb-6">
           
           {/* Smooth Curved SVG Process Path */}
           <svg className="w-full h-[180px] overflow-visible" viewBox="0 0 1200 180" fill="none">
@@ -193,7 +193,7 @@ export function ProcessSection() {
                       </span>
                       <div
                         className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-                          isActive ? "bg-[#df012a] text-white" : "bg-white/10 text-white/70"
+                          isActive ? "bg-[#df012a]" : "bg-white/10 text-white/70"
                         }`}
                       >
                         <IconComponent size={18} />
@@ -209,13 +209,13 @@ export function ProcessSection() {
                     </h3>
 
                     {/* Concise Description */}
-                    <p className="text-white/65 text-xs sm:text-sm leading-relaxed mb-4">
+                    <p className="text-white/65 leading-relaxed mb-4">
                       {station.description}
                     </p>
 
                     {/* Deliverable Label */}
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] font-bold uppercase tracking-wider text-white/80 mt-auto">
-                      <span className="text-[#df012a]">✓</span> {station.deliverable}
+                      <CheckCircle2 size={13} className="text-[#df012a]" /> {station.deliverable}
                     </div>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ export function ProcessSection() {
                     {station.title}
                   </h3>
 
-                  <p className="text-white/65 text-xs sm:text-sm leading-relaxed mb-3">
+                  <p className="text-white/65 leading-relaxed mb-3">
                     {station.description}
                   </p>
 
@@ -272,15 +272,6 @@ export function ProcessSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* ─── BOTTOM SUMMARY BAR ─── */}
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-white/50 gap-4">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#df012a] animate-ping" />
-            <span>CONTINUOUS PRODUCT ASSEMBLY PIPELINE</span>
-          </div>
-          <div>ZERO DOWNTIME // AGILE DELIVERY // VERIFIED</div>
         </div>
 
       </div>

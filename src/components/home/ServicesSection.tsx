@@ -4,12 +4,10 @@ import {
   Cloud,
   Database,
   Users,
+  Zap,
   ArrowRight,
   Sparkles,
-  CheckCircle2,
-  Zap,
 } from "lucide-react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { services } from "@/data/services";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -18,164 +16,135 @@ const iconMap: Record<string, React.ElementType> = {
   Cloud,
   Database,
   Users,
+  Zap,
 };
 
 export function ServicesSection() {
-  const aiService = services.find((s) => s.id === "ai-automation") || services[0];
-  const supportingServices = services.filter((s) => s.id !== "ai-automation");
-
   return (
     <section
       id="services"
-      className="py-15 md:py-20 bg-white relative"
+      className="pt-16 md:pt-20 bg-white relative border-t border-gray-100"
       aria-labelledby="services-heading"
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ─── TOP SECTION: Eyebrow, Heading, Paragraph (Centered) ─── */}
-        <div className="mb-12 md:mb-16 max-w-[900px] mx-auto text-center">
+        
+        {/* ─── SECTION HEADER (Centered) ─── */}
+        <div className="mb-12 md:mb-16 max-w-[950px] mx-auto text-center">
           <span className="inline-flex items-center justify-center gap-2 text-[#df012a] text-xs font-bold uppercase tracking-[0.14em] mb-3">
             <span className="w-5 h-px bg-[#df012a]" />
-            WHAT WE DO
+            ENGINEERING CAPABILITIES
             <span className="w-5 h-px bg-[#df012a]" />
           </span>
           <h2
             id="services-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4 text-black"
+            className="text-black font-bold text-[34px] sm:text-[44px] lg:text-[clamp(38px,4vw,54px)] leading-[1.08] tracking-tight mb-4"
           >
             Engineering capabilities built around{" "}
-            <span className="text-[#df012a]">business outcomes.</span>
+            <span className="text-[#df012a]">complex business operations.</span>
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            We don&apos;t sell technology — we solve business problems. Here are the five areas where we deliver the most value.
+          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            We design, build, integrate, and modernise business-critical platforms using enterprise engineering and practical AI.
           </p>
         </div>
 
-        {/* Asymmetric Capabilities Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* ─── LEFT: Main Featured Capability (AI & Intelligent Automation) ─── */}
-          <article className="lg:col-span-6 xl:col-span-5 bg-black text-white rounded-3xl p-8 sm:p-10 lg:p-12 relative overflow-hidden flex flex-col justify-between border border-white/10 group">
-            {/* Subtle background red glow */}
-            <div
-              className="absolute -top-24 -right-24 w-96 h-96 bg-[#df012a]/20 rounded-full blur-3xl pointer-events-none group-hover:bg-[#df012a]/30 transition-colors duration-500"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#df012a]/10 rounded-full blur-3xl pointer-events-none"
-              aria-hidden="true"
-            />
+        {/* ─── BALANCED EQUAL 6-CARD GRID (3 Cols Desktop / 2 Cols Tablet / 1 Col Mobile) ─── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          {services.map((service) => {
+            const isPrimary = service.id === "ai-automation";
+            const Icon = iconMap[service.icon] || Code2;
 
-            <div>
-              {/* Featured Badge */}
-              <div className="flex items-center justify-between gap-4 mb-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#df012a] text-white text-xs font-bold uppercase tracking-widest shadow-md">
-                  <Sparkles size={14} className="animate-pulse" />
-                  Flagship Capability
-                </div>
-                <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
-                  <Brain size={22} className="text-[#df012a]" />
-                </div>
-              </div>
-
-              {/* Title & Description */}
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                {aiService.title}
-              </h3>
-              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8">
-                {aiService.description}
-              </p>
-
-              {/* Key Highlights / Outcomes list */}
-              <div className="space-y-3 mb-8 pt-4 border-t border-white/10">
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#df012a] mb-3">
-                  Core AI Capabilities Included:
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {aiService.outcomes.map((outcome) => (
-                    <div
-                      key={outcome}
-                      className="flex items-center gap-2.5 text-sm text-white/90 font-medium"
-                    >
-                      <CheckCircle2 size={16} className="text-[#df012a] flex-shrink-0" />
-                      <span>{outcome}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom CTA bar */}
-            <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs text-white/60">
-                <Zap size={14} className="text-[#df012a]" />
-                <span>Production-ready enterprise AI models & agents</span>
-              </div>
-              <a
-                href={aiService.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#df012a] text-white text-sm font-bold rounded-xl hover:bg-[#b8001f] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] shadow-lg group-hover:gap-3"
-                aria-label={`Explore ${aiService.title}`}
-              >
-                Explore AI Solutions <ArrowRight size={16} />
-              </a>
-            </div>
-          </article>
-
-          {/* ─── RIGHT: 4 Supporting Capability Cards (2x2 Grid) ─── */}
-          <div className="lg:col-span-6 xl:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {supportingServices.map((service) => {
-              const Icon = iconMap[service.icon] || Code2;
+            if (isPrimary) {
               return (
                 <article
                   key={service.id}
-                  className="group bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#df012a]/30 hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
+                  className="bg-black text-white border border-[#df012a]/40 rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden shadow-lg hover:border-[#df012a] transition-all duration-300 group"
                 >
-                  {/* Accent border bar on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#df012a] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  {/* Background Red Ambient Glow */}
+                  <div
+                    className="absolute -top-20 -right-20 w-64 h-64 bg-[#df012a]/20 rounded-full blur-2xl pointer-events-none group-hover:bg-[#df012a]/30 transition-colors"
+                    aria-hidden="true"
+                  />
 
                   <div>
-                    {/* Icon */}
-                    <div className="w-11 h-11 bg-[#fbeaec] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#df012a] transition-colors duration-300">
-                      <Icon
-                        size={20}
-                        className="text-[#df012a] group-hover:text-white transition-colors duration-300"
-                      />
+                    {/* Icon & Primary Label */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-11 h-11 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center">
+                        <Brain size={22} className="text-[#df012a]" />
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#df012a] text-white text-[10px] font-bold uppercase tracking-widest rounded-md shadow-sm">
+                        <Sparkles size={12} className="animate-pulse" />
+                        Primary Capability
+                      </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-black text-lg mb-2 leading-snug group-hover:text-[#df012a] transition-colors duration-200">
+                    <h3 className="font-bold text-white text-xl mb-3 leading-tight">
                       {service.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-500 text-base leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-white/80 leading-relaxed mb-6">
                       {service.description}
                     </p>
-
-                    {/* Key Outcome Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {service.outcomes.slice(0, 2).map((outcome) => (
-                        <span
-                          key={outcome}
-                          className="px-2 py-0.5 rounded-md bg-[#fbeaec] text-[#df012a] text-xs font-semibold"
-                        >
-                          {outcome}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
-                  {/* Link */}
-                  <a
-                    href={service.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#df012a] group-hover:gap-2.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] rounded"
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    Learn capability <ArrowRight size={13} />
-                  </a>
+                  {/* CTA Link */}
+                  <div className="pt-4 border-t border-white/15">
+                    <a
+                      href={service.href}
+                      className="inline-flex items-center gap-2 text-xs font-bold text-[#df012a] hover:text-white transition-colors group-hover:gap-3"
+                      aria-label={`Explore ${service.title}`}
+                    >
+                      Explore Agentic AI Solutions <ArrowRight size={14} />
+                    </a>
+                  </div>
                 </article>
               );
-            })}
-          </div>
+            }
+
+            return (
+              <article
+                key={service.id}
+                className="bg-white border border-gray-200/90 rounded-2xl p-7 flex flex-col justify-between hover:border-[#df012a]/40 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+              >
+                {/* Subtle Accent Line on Hover */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#df012a] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
+                <div>
+                  {/* Icon */}
+                  <div className="w-11 h-11 bg-[#fbeaec] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#df012a] transition-colors duration-300">
+                    <Icon
+                      size={20}
+                      className="text-[#df012a] group-hover:text-white transition-colors duration-300"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-bold text-black text-xl mb-3 leading-tight group-hover:text-[#df012a] transition-colors duration-200">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* CTA Link */}
+                <div className="pt-4 border-t border-gray-100">
+                  <a
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#df012a] group-hover:gap-2.5 transition-all duration-200"
+                    aria-label={`Learn more about ${service.title}`}
+                  >
+                    Learn more <ArrowRight size={13} />
+                  </a>
+                </div>
+              </article>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

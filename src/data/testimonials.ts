@@ -3,7 +3,7 @@ export interface Testimonial {
   name: string;
   role: string;
   company: string;
-  industry: string;
+  category: string;
   quote: string;
   initials: string;
 }
@@ -14,49 +14,49 @@ export const testimonials: Testimonial[] = [
     name: "Sarah Mitchell",
     role: "Chief Technology Officer",
     company: "MediFlow Health",
-    industry: "Healthcare",
+    category: "Healthcare & Document Intelligence",
     initials: "SM",
     quote:
-      "eTechLogix didn't just build us software — they fundamentally changed how our clinical operations team works. The document intelligence platform they delivered processes records in seconds that used to take our team hours. The quality of engineering and the depth of understanding they brought to a highly regulated environment was exceptional.",
+      "eTechLogix brought deep domain understanding to a complex, compliance-heavy environment. Their document intelligence platform processes intake records in seconds that used to take our team hours. Their engineers take true ownership of outcomes.",
   },
   {
     id: "t2",
     name: "James Okafor",
     role: "VP of Product & Engineering",
     company: "Nexus Events Group",
-    industry: "Event Technology",
+    category: "Custom Enterprise Platform",
     initials: "JO",
     quote:
-      "We'd worked with several agencies before eTechLogix and always ended up with something that partially worked. This team actually understood the complexity of our event logistics — and built a platform that scales to 10,000+ registrations in a session without breaking a sweat. They're genuinely a long-term technology partner.",
+      "Unlike typical agencies, eTechLogix understood the operational complexity of our event logistics. They engineered a unified platform scaling smoothly to 10,000+ registrations per hour without breaking a sweat. A dependable long-term partner.",
   },
   {
     id: "t3",
     name: "Rebecca Torres",
     role: "Director of Digital Transformation",
     company: "Meridian Manufacturing",
-    industry: "Enterprise Operations",
+    category: "Legacy ERP Modernisation",
     initials: "RT",
     quote:
-      "Migrating a 15-year-old ERP system while keeping the business running felt impossible. eTechLogix made it happen — zero production downtime, our team was onboarded in days, and we cut infrastructure costs in half. The new system gives us real-time visibility we've never had before. I can't recommend them highly enough.",
+      "Modernising a 15-year-old ERP system while keeping our business running felt daunting. eTechLogix executed a phased cloud migration with zero production downtime, giving us real-time operational visibility across supply and finance.",
   },
   {
     id: "t4",
     name: "David Vance",
-    role: "Head of AI Infrastructure",
-    company: "Apex Commerce Solutions",
-    industry: "Retail & E-commerce",
+    role: "Head of AI Operations",
+    company: "Apex Distribution Solutions",
+    category: "Agentic AI & Workflow Automation",
     initials: "DV",
     quote:
-      "The AI recommendation and predictive inventory engine built by eTechLogix transformed our fulfillment operations. We saw a 35% reduction in stockout events during peak sales season. Their engineering team is disciplined, communicative, and focused on tangible ROI.",
+      "The Agentic AI workflow automation eTechLogix deployed connected our CRM, ERP, and logistics tools seamlessly. Their autonomous agents handle multi-step order validations and exception routing, saving us significant operational overhead.",
   },
   {
     id: "t5",
     name: "Elena Rostova",
-    role: "Managing Director",
-    company: "Global Logistics Advisory",
-    industry: "Professional Services",
+    role: "Founder & CEO",
+    company: "Vantage Tech Labs",
+    category: "Startup MVP & Prototype Engineering",
     initials: "ER",
     quote:
-      "Working with eTechLogix was a breath of fresh air. They automated our client onboarding and compliance document validation workflows seamlessly. What used to take a week of manual back-and-forth is now completed automatically within minutes.",
+      "eTechLogix turned our concept into a high-fidelity functional MVP in just 4 weeks. Having a working product to demonstrate directly changed the tone of our customer validation and investor fundraising discussions.",
   },
 ];

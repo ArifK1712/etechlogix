@@ -2,57 +2,71 @@ export interface Industry {
   id: string;
   icon: string;
   title: string;
+  badge?: string;
   description: string;
+  imageSrc: string;
   services: string[];
 }
 
 export const industries: Industry[] = [
   {
+    id: "events-conferences",
+    icon: "Calendar",
+    title: "Events & Conferences",
+    badge: "Industry Sector",
+    description:
+      "Registration, ticketing, attendee management, mobile apps, on-site operations, meetings, engagement, and event reporting.",
+    imageSrc: "/industry-events.png",
+    services: ["Registration & Ticketing", "On-Site Operations", "Event Reporting"],
+  },
+  {
+    id: "erp-distribution",
+    icon: "ShoppingBag",
+    title: "ERP & Distribution",
+    badge: "Industry Sector",
+    description:
+      "Order management, inventory, pricing, warehouse operations, logistics, finance, tax, and connected distribution workflows.",
+    imageSrc: "/industry-retail.png",
+    services: ["Order Management", "Warehouse Operations", "Logistics & Tax"],
+  },
+  {
     id: "healthcare",
     icon: "HeartPulse",
     title: "Healthcare",
+    badge: "Industry Sector",
     description:
-      "Patient portals, clinical workflow automation, medical document intelligence, compliance-ready platforms, and AI-powered diagnostic support tools.",
-    services: ["Document Intelligence", "AI Assistants", "Custom Platforms"],
-  },
-  {
-    id: "event-technology",
-    icon: "Calendar",
-    title: "Event Technology",
-    description:
-      "End-to-end event management platforms, attendee experiences, registration systems, real-time dashboards, and hybrid event infrastructure.",
-    services: ["Custom Software", "Integrations", "Data Engineering"],
-  },
-  {
-    id: "retail-ecommerce",
-    icon: "ShoppingBag",
-    title: "Retail & E-Commerce",
-    description:
-      "AI-driven recommendation engines, inventory intelligence, personalised shopping experiences, and connected supply-chain and fulfilment systems.",
-    services: ["Predictive AI", "Platform Engineering", "Data Pipelines"],
+      "Secure healthcare workflows, document processing, operational automation, system integrations, and compliance-sensitive platforms.",
+    imageSrc: "/industry-healthcare.png",
+    services: ["HIPAA Workflows", "Document Processing", "System Integrations"],
   },
   {
     id: "enterprise-operations",
     icon: "Building2",
     title: "Enterprise Operations",
+    badge: "Business Environment",
     description:
-      "ERP modernisation, intelligent process automation, cross-system data integration, workforce tools, and scalable enterprise application development.",
-    services: ["Legacy Modernisation", "AI Agents", "Cloud Migration"],
+      "Internal portals, approvals, workflow management, reporting, document processing, and business automation.",
+    imageSrc: "/industry-enterprise-operations.png",
+    services: ["Internal Portals", "Approval Workflows", "Business Automation"],
   },
   {
-    id: "professional-services",
-    icon: "Briefcase",
-    title: "Professional Services",
-    description:
-      "Knowledge management systems, document processing, client portals, billing and workflow automation for legal, financial, and consulting firms.",
-    services: ["Document Intelligence", "Custom Portals", "AI Automation"],
-  },
-  {
-    id: "infrastructure",
+    id: "enterprise-integrations",
     icon: "Server",
-    title: "Infrastructure & Utilities",
+    title: "Enterprise Integrations",
+    badge: "Solution Environment",
     description:
-      "IoT data platforms, asset monitoring systems, field service applications, predictive maintenance, and cloud-native operational dashboards.",
-    services: ["Data Engineering", "Cloud Platforms", "Predictive Analytics"],
+      "Connected solutions across Salesforce, MuleSoft, Descartes, Avalara, DMSi Agility, ERP systems, healthcare platforms, cloud services, and custom APIs.",
+    imageSrc: "/industry-enterprise-integrations.png",
+    services: ["Salesforce & MuleSoft", "Descartes & Avalara", "ERP & Cloud APIs"],
+  },
+  {
+    id: "startups-digital-products",
+    icon: "Rocket",
+    title: "Startups & Digital Products",
+    badge: "Business Environment",
+    description:
+      "Clickable prototypes, functional demos, SaaS platforms, MVPs, customer validation, and scalable product foundations.",
+    imageSrc: "/industry-startups-digital-products.png",
+    services: ["Clickable Prototypes", "Functional Demos", "Scalable MVPs"],
   },
 ];

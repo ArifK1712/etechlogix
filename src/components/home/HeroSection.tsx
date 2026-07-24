@@ -12,6 +12,7 @@ interface Slide {
   headline: string;
   headlineAccent: string;
   description: string;
+  proofLine?: { prefix: string; highlight: string; suffix: string };
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
   tag: string;
@@ -20,55 +21,73 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "/hero-ai.png",
-    imageAlt: "Abstract neural network visualization representing AI and intelligent automation",
-    eyebrow: "AI & Intelligent Automation",
-    headline: "Build intelligent software that moves your",
-    headlineAccent: "business forward.",
+    image: "/hero-enterprise-software.png",
+    imageAlt: "Real enterprise software architecture workshop in a bright corporate office",
+    eyebrow: "ENTERPRISE CUSTOM SOFTWARE",
+    headline: "Custom software engineered for",
+    headlineAccent: "complex enterprise operations.",
     description:
-      "We design and deploy AI agents, document intelligence systems, and generative AI solutions grounded in your data — built for real operations, not proof-of-concept demos.",
-    primaryCta: { label: "Explore AI Solutions", href: "/services/ai-automation" },
-    secondaryCta: { label: "Discuss Your Project", href: "/contact" },
-    tag: "AI Solutions",
+      "We design and develop AI-powered enterprise platforms for events and conferences, ERP and distribution operations, healthcare, workflow management, and connected business environments.",
+    primaryCta: { label: "Discuss Your Enterprise Project", href: "/contact" },
+    secondaryCta: { label: "Explore Our Capabilities", href: "#services" },
+    tag: "Custom Software",
   },
   {
     id: 2,
-    image: "/hero-software.png",
-    imageAlt: "Abstract software architecture diagram representing custom engineering",
-    eyebrow: "Custom Software Engineering",
-    headline: "Scalable platforms engineered around your",
-    headlineAccent: "users and goals.",
+    image: "/hero-ai-workflow.png",
+    imageAlt: "Professionals reviewing AI-powered workflow automation dashboard in a daylight office",
+    eyebrow: "AGENTIC AI & WORKFLOW AUTOMATION",
+    headline: "AI agents that complete real",
+    headlineAccent: "business workflows.",
     description:
-      "From SaaS products and enterprise systems to APIs and mobile applications — we architect and deliver software built to scale, perform, and adapt as your business grows.",
-    primaryCta: { label: "Our Engineering Work", href: "/work" },
-    secondaryCta: { label: "Start a Project", href: "/contact" },
-    tag: "Software Engineering",
+      "We build Agentic AI systems that connect enterprise applications, process documents, execute multi-step tasks, apply business rules, manage exceptions, and involve people when approvals are required.",
+    proofLine: {
+      prefix: "“Helping clients achieve ",
+      highlight: "millions in operational savings",
+      suffix: " through AI-powered workflow automation.”",
+    },
+    primaryCta: { label: "Explore Agentic AI", href: "#ai-solutions" },
+    secondaryCta: { label: "Discuss an AI Use Case", href: "/contact" },
+    tag: "Agentic AI",
   },
   {
     id: 3,
-    image: "/hero-cloud.png",
-    imageAlt: "Abstract cloud infrastructure visualization representing modernisation",
-    eyebrow: "Cloud & Modernisation",
-    headline: "Move away from legacy systems without",
-    headlineAccent: "disrupting operations.",
+    image: "/hero-enterprise-integrations.png",
+    imageAlt: "Enterprise IT directors reviewing system integration topology dashboard in a daylight office",
+    eyebrow: "ENTERPRISE INTEGRATIONS",
+    headline: "Connect the enterprise systems your",
+    headlineAccent: "business already depends on.",
     description:
-      "Phased modernisation programmes, cloud-native re-architecture, and zero-downtime migrations — we replace what holds your business back while keeping the lights on throughout.",
-    primaryCta: { label: "Cloud & Modernisation", href: "/services/cloud" },
-    secondaryCta: { label: "Talk to an Expert", href: "/contact" },
-    tag: "Cloud Migration",
+      "We engineer secure integrations across Salesforce, MuleSoft, Descartes, Avalara, DMSi Agility, ERP platforms, healthcare systems, cloud services, and custom applications.",
+    primaryCta: { label: "Explore Enterprise Integrations", href: "#services" },
+    secondaryCta: { label: "Discuss an Integration", href: "/contact" },
+    tag: "Enterprise Integrations",
   },
   {
     id: 4,
     image: "/hero-teams.png",
-    imageAlt: "Abstract collaborative network visualization representing dedicated engineering teams",
-    eyebrow: "Dedicated Technology Teams",
+    imageAlt: "Dedicated engineering team network visualization",
+    eyebrow: "DEDICATED ENGINEERING TEAMS",
     headline: "Extend your team with engineers who",
     headlineAccent: "think like owners.",
     description:
-      "Experienced engineers, cloud specialists, and technical leads who integrate directly with your organisation — working on your roadmap, in your tools, at your cadence.",
-    primaryCta: { label: "Dedicated Teams", href: "/services/teams" },
-    secondaryCta: { label: "Get in Touch", href: "/contact" },
+      "Add experienced engineers, architects, designers, cloud specialists, and AI experts who understand your objectives, take responsibility, and work as an extension of your organisation.",
+    primaryCta: { label: "Build Your Engineering Team", href: "#services" },
+    secondaryCta: { label: "Discuss Your Requirements", href: "/contact" },
     tag: "Dedicated Teams",
+  },
+  {
+    id: 5,
+    image: "/hero-cloud.png",
+    imageAlt: "Legacy system modernisation and cloud migration visualization",
+    eyebrow: "LEGACY SYSTEM MODERNISATION",
+    headline: "Move away from legacy systems without",
+    headlineAccent: "disrupting operations.",
+    description:
+      "Modernise ageing applications, migrate critical data, improve integrations, and introduce scalable cloud and AI capabilities through a controlled, phased approach.",
+    primaryCta: { label: "Explore Modernisation", href: "#services" },
+    secondaryCta: { label: "Talk to Our Team", href: "/contact" },
+    tag: "Legacy Modernisation",
   },
 ];
 
@@ -171,7 +190,7 @@ export function HeroSection() {
               priority
             />
             {/* Gradient overlay: fade to dark on right edge to bleed into white panel */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-black/80" />
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-black/80" /> */}
           </div>
 
           {/* Slide tag badge — bottom left */}
@@ -226,11 +245,26 @@ export function HeroSection() {
             {/* Description */}
             <p
               key={`desc-${current}`}
-              className="text-gray-500 text-base leading-relaxed mb-10 animate-fadeUp"
+              className={`text-gray-500 leading-relaxed ${slide.proofLine ? "mb-4" : "mb-10"} animate-fadeUp`}
               style={{ animationDelay: "120ms" }}
             >
               {slide.description}
             </p>
+
+            {/* Compact Proof Line (Slide 2) */}
+            {slide.proofLine && (
+              <p
+                key={`proof-${current}`}
+                className="font-medium text-gray-700 leading-relaxed mb-8 animate-fadeUp"
+                style={{ animationDelay: "150ms" }}
+              >
+                {slide.proofLine.prefix}
+                <span className="text-[#df012a] font-semibold">
+                  {slide.proofLine.highlight}
+                </span>
+                {slide.proofLine.suffix}
+              </p>
+            )}
 
             {/* CTAs */}
             <div

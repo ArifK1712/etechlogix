@@ -10,7 +10,6 @@ const navLinks = [
   { label: "AI Solutions", href: "/services/ai-automation" },
   { label: "Industries", href: "/industries" },
   { label: "Work", href: "/work" },
-  { label: "Insights", href: "/insights" },
   { label: "Company", href: "/company" },
 ];
 
