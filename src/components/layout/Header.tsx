@@ -34,15 +34,8 @@ const navCategories: NavCategory[] = [
   {
     id: "ai-solutions",
     label: "AI Solutions",
-    href: "/services/ai-automation",
-    items: [
-      { label: "Agentic AI & Workflow Automation", href: "/ai-solutions/agentic-ai-workflow-automation" },
-      { label: "Document Processing Agents", href: "/ai-solutions/document-processing-agents" },
-      { label: "ERP & CRM Connected Agents", href: "/ai-solutions/erp-crm-connected-agents" },
-      { label: "Approval & Exception Agents", href: "/ai-solutions/approval-exception-agents" },
-      { label: "Healthcare Workflow Agents", href: "/ai-solutions/healthcare-workflow-agents" },
-      { label: "Event Operations Agents", href: "/ai-solutions/event-operations-agents" },
-    ],
+    href: "#ai-solutions",
+    items: [],
   },
   {
     id: "industries",
@@ -180,59 +173,64 @@ export function Header() {
             >
               {navCategories.map((category) => {
                 const isOpen = activeDropdown === category.id;
+                const hasItems = category.items && category.items.length > 0;
                 return (
                   <div
                     key={category.id}
                     className="relative"
-                    onMouseEnter={() => handleMouseEnter(category.id)}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={() => hasItems && handleMouseEnter(category.id)}
+                    onMouseLeave={hasItems ? handleMouseLeave : undefined}
                   >
                     <Link
                       href={category.href}
                       className={`inline-flex items-center gap-1 px-4 py-2 rounded-md text-white transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a] ${
                         isOpen ? "text-[#df012a] bg-white/10" : "hover:text-[#df012a] hover:bg-white/10"
                       }`}
-                      aria-expanded={isOpen}
-                      aria-controls={`dropdown-${category.id}`}
+                      aria-expanded={hasItems ? isOpen : undefined}
+                      aria-controls={hasItems ? `dropdown-${category.id}` : undefined}
                       onClick={() => {
                         setActiveDropdown(null);
                       }}
                     >
                       <span>{category.label}</span>
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-200 ${
-                          isOpen ? "rotate-180 text-[#df012a]" : "text-gray-400"
-                        }`}
-                      />
+                      {hasItems && (
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${
+                            isOpen ? "rotate-180 text-[#df012a]" : "text-gray-400"
+                          }`}
+                        />
+                      )}
                     </Link>
 
                     {/* Desktop Dropdown Panel */}
-                    <div
-                      id={`dropdown-${category.id}`}
-                      className={`absolute top-full left-0 pt-2 w-64 z-50 transition-all duration-200 ease-out origin-top-left ${
-                        isOpen
-                          ? "opacity-100 translate-y-0 pointer-events-auto"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby={`cat-${category.id}`}
-                    >
-                      <div className="bg-[#0a0a0a]/95 border border-white/10 backdrop-blur-xl shadow-2xl rounded-2xl p-2 space-y-0.5">
-                        {category.items.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            role="menuitem"
-                            className="block px-3.5 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a]"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
+                    {hasItems && (
+                      <div
+                        id={`dropdown-${category.id}`}
+                        className={`absolute top-full left-0 pt-2 w-64 z-50 transition-all duration-200 ease-out origin-top-left ${
+                          isOpen
+                            ? "opacity-100 translate-y-0 pointer-events-auto"
+                            : "opacity-0 -translate-y-2 pointer-events-none"
+                        }`}
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby={`cat-${category.id}`}
+                      >
+                        <div className="bg-[#0a0a0a]/95 border border-white/10 backdrop-blur-xl shadow-2xl rounded-2xl p-2 space-y-0.5">
+                          {category.items.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              role="menuitem"
+                              className="block px-3.5 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#df012a]"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 );
               })}
@@ -285,7 +283,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className="p-2 rounded-lg text-white hover:text-[#df012a] hover:bg-white/10 transition-colors focus-visible:outline-none"
+            className="p-2 rounded-lg text-white hover:text-[#df012a] hover:bg-[#df012a]/10 transition-colors focus-visible:outline-none"
             onClick={() => setMobileOpen(false)}
             aria-label="Close menu"
           >
@@ -297,6 +295,7 @@ export function Header() {
         <nav className="flex flex-col px-4 py-4 gap-1 flex-1 overflow-y-auto" aria-label="Mobile navigation">
           {navCategories.map((category) => {
             const isExpanded = mobileExpandedCat === category.id;
+            const hasItems = category.items && category.items.length > 0;
             return (
               <div key={category.id} className="border-b border-white/5 pb-1">
                 <div className="flex items-center justify-between">
@@ -307,24 +306,26 @@ export function Header() {
                   >
                     {category.label}
                   </Link>
-                  <button
-                    type="button"
-                    className="p-3 text-gray-400 hover:text-white transition-colors"
-                    onClick={() => toggleMobileCat(category.id)}
-                    aria-label={`Toggle ${category.label} sub-items`}
-                    aria-expanded={isExpanded}
-                  >
-                    <ChevronDown
-                      size={18}
-                      className={`transition-transform duration-200 ${
-                        isExpanded ? "rotate-180 text-[#df012a]" : ""
-                      }`}
-                    />
-                  </button>
+                  {hasItems && (
+                    <button
+                      type="button"
+                      className="p-3 text-gray-400 hover:text-white transition-colors"
+                      onClick={() => toggleMobileCat(category.id)}
+                      aria-label={`Toggle ${category.label} sub-items`}
+                      aria-expanded={isExpanded}
+                    >
+                      <ChevronDown
+                        size={18}
+                        className={`transition-transform duration-200 ${
+                          isExpanded ? "rotate-180 text-[#df012a]" : ""
+                        }`}
+                      />
+                    </button>
+                  )}
                 </div>
 
                 {/* Mobile Collapsible Sub-items */}
-                {isExpanded && (
+                {hasItems && isExpanded && (
                   <div className="pl-4 pr-2 pb-2 space-y-1 bg-white/5 rounded-xl py-2 my-1">
                     {category.items.map((subItem) => (
                       <Link

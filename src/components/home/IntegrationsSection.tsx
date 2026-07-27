@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldCheck, Network, Cpu, Database, Server, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Network, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface IntegrationGroup {
   id: string;

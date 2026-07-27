@@ -60,10 +60,7 @@ function StatColumn({
   const [currentCount, setCurrentCount] = useState(prefersReducedMotion ? stat.value : 0);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      setCurrentCount(stat.value);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     if (!isIntersecting) return;
 
@@ -129,11 +126,12 @@ function StatColumn({
 export function TrustBar() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const observer = new IntersectionObserver(
       ([entry]) => {

@@ -55,16 +55,16 @@ const stations: AssemblyStation[] = [
 
 export function ProcessSection() {
   const [activeStationIdx, setActiveStationIdx] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
   const sectionRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const redSignalRef = useRef<SVGCircleElement>(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    if (mediaQuery.matches) return;
+    if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
       // Natural unpinned ScrollTrigger scrubbing red signal along SVG path
@@ -91,7 +91,7 @@ export function ProcessSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section

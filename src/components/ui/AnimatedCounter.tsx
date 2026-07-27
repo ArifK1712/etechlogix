@@ -36,7 +36,6 @@ export function AnimatedCounter({ value, label, duration = 2000 }: AnimatedCount
 
   useEffect(() => {
     if (!hasStarted || number === 0) return;
-    let start = 0;
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {

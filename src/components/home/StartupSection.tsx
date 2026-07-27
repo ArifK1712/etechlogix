@@ -72,7 +72,7 @@ export function StartupSection() {
 
         {/* ─── THREE-STAGE PROGRESSION GRID ─── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {startupStages.map((stage, idx) => (
+          {startupStages.map((stage) => (
             <div
               key={stage.num}
               className="bg-[#fbeaec]/40 border border-[#df012a]/15 rounded-3xl p-7 sm:p-9 flex flex-col justify-between hover:border-[#df012a]/40 transition-all duration-300 shadow-sm group"

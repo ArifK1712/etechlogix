@@ -21,8 +21,6 @@ import {
   Check,
   AlertTriangle,
   RefreshCw,
-  Server,
-  Activity,
 } from "lucide-react";
 
 export interface AgenticTab {
@@ -721,19 +719,18 @@ export function AiSection() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
   const [translateOffset, setTranslateOffset] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted] = useState(() => typeof window !== "undefined");
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   // Recalculate track max scroll offset
   const updateMaxOffset = useCallback(() => {
@@ -754,8 +751,6 @@ export function AiSection() {
 
   // Reduced motion & Intersection Observer
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsIntersecting(entry.isIntersecting),

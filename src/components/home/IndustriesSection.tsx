@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -87,13 +87,10 @@ const industriesData: IndustryItem[] = [
 
 export function IndustriesSection() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-  }, []);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
   const active = industriesData[activeIdx];
 
@@ -103,7 +100,6 @@ export function IndustriesSection() {
 
   return (
     <section
-      ref={sectionRef}
       id="industries"
       className="relative z-10 w-full py-16 lg:py-20 bg-[radial-gradient(circle_at_30%_45%,rgba(223,1,42,0.24),transparent_38%),radial-gradient(circle_at_78%_72%,rgba(120,0,24,0.16),transparent_34%),linear-gradient(135deg,#030303_0%,#22040b_48%,#080808_100%)] text-white overflow-hidden"
       aria-labelledby="industries-heading"
