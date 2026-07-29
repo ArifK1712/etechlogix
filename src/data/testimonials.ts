@@ -17,7 +17,7 @@ export const testimonials: Testimonial[] = [
     category: "Healthcare & Document Intelligence",
     initials: "SM",
     quote:
-      "eTechLogix brought deep domain understanding to a complex, compliance-heavy environment. Their document intelligence platform processes intake records in seconds that used to take our team hours. Their engineers take true ownership of outcomes.",
+      "Our intake process involved significant manual effort across compliance-heavy documentation. eTechLogix built a document intelligence platform that processes patient records accurately and at speed, with automatic exception routing when clinical review is needed. Their engineers take genuine ownership of outcomes.",
   },
   {
     id: "t2",
@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
     category: "Custom Enterprise Platform",
     initials: "JO",
     quote:
-      "Unlike typical agencies, eTechLogix understood the operational complexity of our event logistics. They engineered a unified platform scaling smoothly to 10,000+ registrations per hour without breaking a sweat. A dependable long-term partner.",
+      "Event operations involve far more complexity than most software vendors appreciate. eTechLogix understood our registration, exhibitor, and on-site workflows from the start. The platform they engineered handles large-scale concurrent registrations reliably and has become the operational foundation we run every event on.",
   },
   {
     id: "t3",
@@ -37,7 +37,7 @@ export const testimonials: Testimonial[] = [
     category: "Legacy ERP Modernisation",
     initials: "RT",
     quote:
-      "Modernising a 15-year-old ERP system while keeping our business running felt daunting. eTechLogix executed a phased cloud migration with zero production downtime, giving us real-time operational visibility across supply and finance.",
+      "Modernising a 15-year-old ERP while keeping operations running was a real risk. eTechLogix executed a phased migration with zero production downtime, connected our supply chain and finance data, and gave our operations team real-time visibility they didn't have before.",
   },
   {
     id: "t4",
@@ -47,16 +47,16 @@ export const testimonials: Testimonial[] = [
     category: "Agentic AI & Workflow Automation",
     initials: "DV",
     quote:
-      "The Agentic AI workflow automation eTechLogix deployed connected our CRM, ERP, and logistics tools seamlessly. Their autonomous agents handle multi-step order validations and exception routing, saving us significant operational overhead.",
+      "We had order validation and exception handling spread across CRM, ERP, and logistics tools with significant manual coordination in between. The Agentic AI workflow eTechLogix built connects those systems, handles multi-step validations autonomously, and routes exceptions to the right people when intervention is needed.",
   },
   {
     id: "t5",
     name: "Elena Rostova",
     role: "Founder & CEO",
     company: "Vantage Tech Labs",
-    category: "Startup MVP & Prototype Engineering",
+    category: "Startup Prototype & MVP Engineering",
     initials: "ER",
     quote:
-      "eTechLogix turned our concept into a high-fidelity functional MVP in just 4 weeks. Having a working product to demonstrate directly changed the tone of our customer validation and investor fundraising discussions.",
+      "We needed a working product experience to validate our concept with customers and open investor conversations. eTechLogix helped us define the core workflow, built a high-fidelity interactive prototype, and moved quickly into a functional MVP. Having something real to demonstrate changed the quality of those early discussions entirely.",
   },
 ];

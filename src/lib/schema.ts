@@ -17,7 +17,7 @@ export function generateOrganizationSchema() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hello@etechlogix.com",
+      email: "contact@etechlogix.com",
       availableLanguage: "English",
     },
     sameAs: [

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
 
 interface IndustryItem {
   id: string;
@@ -20,21 +21,21 @@ const industriesData: IndustryItem[] = [
   {
     id: "events-conferences",
     num: "01",
-    badgeLabel: "01 / INDUSTRY SECTOR",
+    badgeLabel: "01 / EVENTS & CONFERENCES",
     title: "Events & Conferences",
     description:
-      "Registration, ticketing, attendee management, mobile apps, on-site operations, meetings, engagement, and event reporting.",
-    imageSrc: "/industry-events.png",
-    imageAlt: "Events & Conferences platform technology visual",
+      "Large-scale events run on dozens of moving parts — registrations, ticketing, exhibitor portals, badge printing, session scheduling, B2B meetings, and on-site access control. We build end-to-end event platforms that coordinate every operational layer, from attendee registration through to live check-in and post-event reporting.",
+    imageSrc: "/industry-events-auditorium.jpg",
+    imageAlt: "Large conference auditorium with red stage lighting and keynote presentation",
     href: "/contact",
   },
   {
     id: "erp-distribution",
     num: "02",
-    badgeLabel: "02 / INDUSTRY SECTOR",
+    badgeLabel: "02 / ERP & DISTRIBUTION",
     title: "ERP & Distribution",
     description:
-      "Order management, inventory, pricing, warehouse operations, logistics, finance, tax, and connected distribution workflows.",
+      "Distribution operations depend on precise coordination between inventory, pricing, orders, warehousing, logistics, and finance. We build connected platforms and AI workflows that automate order processing, sync data across DMSi Agility, Salesforce, and Avalara, and give operations teams real-time visibility across the supply chain.",
     imageSrc: "/industry-retail.png",
     imageAlt: "ERP and Distribution operations technology visual",
     href: "/contact",
@@ -42,55 +43,30 @@ const industriesData: IndustryItem[] = [
   {
     id: "healthcare",
     num: "03",
-    badgeLabel: "03 / INDUSTRY SECTOR",
+    badgeLabel: "03 / HEALTHCARE",
     title: "Healthcare",
     description:
-      "Secure healthcare workflows, document processing, operational automation, system integrations, and compliance-sensitive platforms.",
-    imageSrc: "/industry-healthcare.png",
-    imageAlt: "Secure Healthcare workflow software visual",
+      "Healthcare environments carry strict compliance requirements alongside complex patient and operational workflows. We design HIPAA-compliant platforms for patient intake, care coordination, insurance eligibility, and EHR integrations — with AI agents that process documents, validate records, and route clinical exceptions to the right staff automatically.",
+    imageSrc: "/industry-healthcare-workstation.jpg",
+    imageAlt: "Modern clinical workstation displaying EHR patient intake and workflow dashboards",
     href: "/contact",
   },
   {
     id: "enterprise-operations",
     num: "04",
-    badgeLabel: "04 / BUSINESS ENVIRONMENT",
-    title: "Enterprise Operations",
+    badgeLabel: "04 / ENTERPRISE OPERATIONS",
+    title: "Enterprise Internal Operations",
     description:
-      "Internal portals, approvals, workflow management, reporting, document processing, and business automation.",
+      "As organisations scale, internal operations outgrow spreadsheets and disconnected tools. We build custom internal platforms — approval workflows, role-based portals, request management systems, and operational dashboards — that replace manual handoffs with structured, auditable, and connected business processes.",
     imageSrc: "/industry-enterprise-operations.png",
     imageAlt: "Enterprise Operations control room in a sunlit office",
     href: "/contact",
-  },
-  {
-    id: "enterprise-integrations",
-    num: "05",
-    badgeLabel: "05 / SOLUTION ENVIRONMENT",
-    title: "Enterprise Integrations",
-    description:
-      "Connected solutions across Salesforce, MuleSoft, Descartes, Avalara, DMSi Agility, ERP systems, healthcare platforms, cloud services, and custom APIs.",
-    imageSrc: "/industry-enterprise-integrations.png",
-    imageAlt: "Enterprise IT architecture team reviewing integration topology on a glass display",
-    href: "/contact",
-  },
-  {
-    id: "startups-digital-products",
-    num: "06",
-    badgeLabel: "06 / BUSINESS ENVIRONMENT",
-    title: "Startups & Digital Products",
-    description:
-      "Clickable prototypes, functional demos, SaaS platforms, MVPs, customer validation, and scalable product foundations.",
-    imageSrc: "/industry-startups-digital-products.png",
-    imageAlt: "Startup product team reviewing interactive UX wireframes and SaaS MVP dashboards in a sunlit office",
-    href: "#startups",
   },
 ];
 
 export function IndustriesSection() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [prefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const prefersReducedMotion = useReducedMotion() ?? false;
 
   const active = industriesData[activeIdx];
 
@@ -135,7 +111,7 @@ export function IndustriesSection() {
           
           {/* LEFT SIDE: Large Industry Image (60% = 7 Cols) */}
           <div className="lg:col-span-7 w-full order-1 lg:order-1">
-            <div className="relative aspect-[16/10] h-[300px] sm:h-[480px] lg:h-[680px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group bg-[#0b0b0b]">
+            <div className="relative aspect-[16/10] h-[300px] sm:h-[480px] lg:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group bg-[#0b0b0b]">
               {/* Active Image Crossfade */}
               {industriesData.map((item, i) => (
                 <div

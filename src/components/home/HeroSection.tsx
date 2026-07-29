@@ -14,6 +14,7 @@ interface Slide {
   headlineAccent: string;
   description: string;
   proofLine?: { prefix: string; highlight: string; suffix: string };
+  supportingPoints?: string[];
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
   tag: string;
@@ -24,14 +25,19 @@ const slides: Slide[] = [
     id: 1,
     image: "/hero-enterprise-software.png",
     imageAlt: "Real enterprise software architecture workshop in a bright corporate office",
-    eyebrow: "ENTERPRISE CUSTOM SOFTWARE",
-    headline: "Custom software engineered for",
-    headlineAccent: "complex enterprise operations.",
+    eyebrow: "ENTERPRISE AI & CUSTOM SOFTWARE",
+    headline: "Software and AI workflows",
+    headlineAccent: "built around your business.",
     description:
-      "We design and develop AI-powered enterprise platforms for events and conferences, ERP and distribution operations, healthcare, workflow management, and connected business environments.",
-    primaryCta: { label: "Discuss Your Enterprise Project", href: "/contact" },
-    secondaryCta: { label: "Explore Our Capabilities", href: "#services" },
-    tag: "Custom Software",
+      "We design enterprise software, connected platforms, system integrations, and AI-powered workflows for complex business operations.",
+    supportingPoints: [
+      "Built around your operations",
+      "Connected to existing systems",
+      "Designed for enterprise scale",
+    ],
+    primaryCta: { label: "Discuss Your Project", href: "/contact" },
+    secondaryCta: { label: "Explore Capabilities", href: "#services" },
+    tag: "Enterprise AI & Software",
   },
   {
     id: 2,
@@ -168,6 +174,7 @@ export function HeroSection() {
                 src={prevSlide.image}
                 alt={prevSlide.imageAlt}
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
                 priority
               />
@@ -187,6 +194,7 @@ export function HeroSection() {
               src={slide.image}
               alt={slide.imageAlt}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-center"
               priority
             />
@@ -246,11 +254,27 @@ export function HeroSection() {
             {/* Description */}
             <p
               key={`desc-${current}`}
-              className={`text-gray-500 leading-relaxed ${slide.proofLine ? "mb-4" : "mb-10"} animate-fadeUp`}
+              className={`text-gray-500 leading-relaxed ${slide.proofLine || slide.supportingPoints ? "mb-4" : "mb-10"} animate-fadeUp`}
               style={{ animationDelay: "120ms" }}
             >
               {slide.description}
             </p>
+
+            {/* Supporting Points (Slide 1) */}
+            {slide.supportingPoints && (
+              <div
+                key={`points-${current}`}
+                className="flex flex-col sm:flex-row flex-wrap gap-x-5 gap-y-2 mb-8 animate-fadeUp"
+                style={{ animationDelay: "150ms" }}
+              >
+                {slide.supportingPoints.map((point, i) => (
+                  <span key={i} className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#df012a] shrink-0" aria-hidden="true" />
+                    {point}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {/* Compact Proof Line (Slide 2) */}
             {slide.proofLine && (

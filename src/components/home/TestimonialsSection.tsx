@@ -2,16 +2,14 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Quote, ArrowLeft, ArrowRight } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
 import { testimonials } from "@/data/testimonials";
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [prefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -88,14 +86,14 @@ export function TestimonialsSection() {
             <span className="text-[#df012a]">business and technology challenges.</span>
           </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our clients value the way we understand their business, take ownership, manage complexity, and deliver dependable software outcomes.
+            Engagements across healthcare, events, distribution, AI workflow automation, and startup product development.
           </p>
         </div>
 
         {/* ─── CONTROLS HEADER BAR: TOP RIGHT ARROW BUTTONS ─── */}
         <div className="flex items-center justify-between mb-6">
           <div className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500">
-            PARTNER TESTIMONIALS ({currentIndex + 1} / {total})
+            CLIENT ENGAGEMENTS ({currentIndex + 1} / {total})
           </div>
 
           <div className="flex items-center gap-2.5">

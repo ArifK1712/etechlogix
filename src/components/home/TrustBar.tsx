@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 interface StatItem {
   id: string;
@@ -15,7 +16,7 @@ const statsData: StatItem[] = [
   {
     id: "years-exp",
     index: "01",
-    value: 10,
+    value: 30,
     hasPlus: true,
     label: "Years of Experience",
     ariaLabel: "Over 10 years of experience",
@@ -23,7 +24,7 @@ const statsData: StatItem[] = [
   {
     id: "projects-del",
     index: "02",
-    value: 150,
+    value: 500,
     hasPlus: true,
     label: "Projects Delivered",
     ariaLabel: "Over 150 projects delivered",
@@ -39,8 +40,8 @@ const statsData: StatItem[] = [
   {
     id: "ind-cov",
     index: "04",
-    value: 6,
-    hasPlus: false,
+    value: 10,
+    hasPlus: true,
     label: "Industries Covered",
     ariaLabel: "6 industries covered",
   },
@@ -126,10 +127,7 @@ function StatColumn({
 export function TrustBar() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [prefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const prefersReducedMotion = useReducedMotion() ?? false;
 
   useEffect(() => {
 
@@ -151,28 +149,25 @@ export function TrustBar() {
     <section
       ref={sectionRef}
       id="credibility-stats"
-      className="relative z-10 w-full py-12 lg:py-16"
+      className="relative z-10 w-full py-8 lg:py-10"
       aria-label="Enterprise credibility statistics"
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          {/* Left: Introduction Header & Supporting Text */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+
+          {/* Left: Heading only — no supporting paragraph */}
           <div className="lg:col-span-4 pr-0 lg:pr-6">
             <span className="inline-flex items-center gap-2 text-[#df012a] text-xs font-bold uppercase tracking-[0.14em] mb-2.5">
               <span className="w-4 h-px bg-[#df012a]" />
               PROVEN DELIVERY
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight mb-3">
-              Enterprise delivery backed by proven experience.
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight tracking-tight">
+              Millions Saved via workflow automation
             </h2>
-            <p className="leading-relaxed">
-              Years of engineering experience across complex platforms, enterprise integrations, AI-powered workflows, and long-term product development.
-            </p>
           </div>
 
           {/* Right: 4 Metrics in 1 Row on Desktop, 2x2 on Tablet, Stacked on Mobile */}
-          <div className="lg:col-span-8 bg-[linear-gradient(135deg,#0a0a0a_0%,#1b050a_55%,#0d0d0d_100%)] border border-white/10 shadow-2xl rounded-2xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-8 bg-[linear-gradient(135deg,#0a0a0a_0%,#1b050a_55%,#0d0d0d_100%)] border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {statsData.map((stat, i) => (
               <StatColumn
                 key={stat.id}

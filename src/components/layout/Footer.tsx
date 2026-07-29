@@ -54,8 +54,8 @@ export function Footer() {
         {/* CTA strip */}
         <div className="mb-12 pb-8 border-b border-gray-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <p className="text-white font-semibold text-lg">Ready to build something intelligent?</p>
-            <p className="text-gray-400 text-base mt-1">Let&apos;s start with a conversation.</p>
+            <p className="text-white font-semibold">Ready to build something intelligent?</p>
+            <p className="text-gray-400 mt-1">Let&apos;s start with a conversation.</p>
           </div>
           <Button variant="primary" size="md" href="/contact">
             Discuss Your Project <ArrowUpRight size={16} />
@@ -64,7 +64,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-xs">
+            <p className="text-gray-400 leading-relaxed mb-6 max-w-xs">
               AI and custom software engineering company helping businesses modernise operations,
               automate workflows, and build scalable digital products.
             </p>
@@ -77,10 +77,10 @@ export function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={15} className="text-[#df012a] flex-shrink-0" />
                 <a
-                  href="mailto:hello@etechlogix.com"
+                  href="mailto:contact@etechlogix.com"
                   className="hover:text-[#df012a] transition-colors"
                 >
-                  hello@etechlogix.com
+                  contact@etechlogix.com
                 </a>
               </li>
             </ul>

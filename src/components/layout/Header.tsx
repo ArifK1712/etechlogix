@@ -24,7 +24,7 @@ const navCategories: NavCategory[] = [
     label: "Services",
     href: "/services",
     items: [
-      { label: "Enterprise Custom Software", href: "/services/custom-software" },
+      { label: "Enterprise Custom Software", href: "/#custom-software" },
       { label: "Enterprise Integrations", href: "/services/enterprise-integrations" },
       { label: "Legacy Modernisation", href: "/services/legacy-modernisation" },
       { label: "Dedicated Engineering Teams", href: "/services/dedicated-engineering-teams" },

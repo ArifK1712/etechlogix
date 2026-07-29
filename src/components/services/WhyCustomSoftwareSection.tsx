@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 export function WhyCustomSoftwareSection() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion() ?? false;
 
   // Motion variants
   const fadeIn = {
@@ -44,7 +44,7 @@ export function WhyCustomSoftwareSection() {
 
   return (
     <section
-      className="relative z-10 w-full py-16 lg:py-20 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(223,1,42,0.04),transparent_70%),linear-gradient(180deg,#ffffff_0%,#fdf8f8_50%,#ffffff_100%)] text-black overflow-hidden border-b border-gray-200/80"
+      className="relative z-10 w-full py-14 lg:py-18 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(223,1,42,0.04),transparent_70%),linear-gradient(180deg,#ffffff_0%,#fdf8f8_50%,#ffffff_100%)] text-black overflow-hidden border-b border-gray-200/80"
       aria-labelledby="why-custom-heading"
     >
       {/* Subtle Dotted Background Pattern */}
@@ -58,11 +58,11 @@ export function WhyCustomSoftwareSection() {
       />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
           
-          {/* ─── LEFT CONTENT COLUMN (~38% WIDTH ON DESKTOP) ─── */}
+          {/* ─── LEFT CONTENT COLUMN (~42% WIDTH ON DESKTOP) ─── */}
           <motion.div
-            className="lg:col-span-5 space-y-6"
+            className="lg:col-span-5 space-y-5"
             initial={prefersReducedMotion ? false : "hidden"}
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -82,7 +82,7 @@ export function WhyCustomSoftwareSection() {
             <motion.h2
               id="why-custom-heading"
               variants={prefersReducedMotion ? undefined : fadeIn}
-              className="text-black font-bold text-[32px] sm:text-[44px] leading-[1.1] tracking-tight"
+              className="text-black font-bold text-[32px] sm:text-[42px] leading-[1.1] tracking-tight"
             >
               When your operations outgrow{" "}
               <span className="text-[#df012a]">off-the-shelf software.</span>
@@ -91,64 +91,64 @@ export function WhyCustomSoftwareSection() {
             {/* Description */}
             <motion.p
               variants={prefersReducedMotion ? undefined : fadeIn}
-              className="text-gray-700 text-base sm:text-lg leading-relaxed font-normal"
+              className="text-gray-700 leading-relaxed font-normal"
             >
-              Generic platforms often force teams to adapt their processes around rigid tools. We design software around the way your people, workflows, data, and existing systems actually operate.
+              Generic platforms force businesses to adapt their processes around rigid tools. The result is disconnected workflows, manual handoffs between systems, limited integration options, and an architecture that becomes harder to change as operations evolve.
             </motion.p>
 
-            {/* Open List Items (Dividers, No Cards!) */}
+            {/* Supporting Points */}
             <motion.div
               variants={prefersReducedMotion ? undefined : fadeIn}
-              className="space-y-6 pt-4 border-t border-gray-200/80 divide-y divide-gray-200/80"
+              className="space-y-4 pt-3"
             >
-              {/* Item 1 */}
-              <div className="pt-6 first:pt-0 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
-                  <Workflow size={20} />
+              {/* Point 1 */}
+              <div className="pt-4 first:pt-0 flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
+                  <Workflow size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1">
-                    Workflow fit
+                  <h3 className="text-base font-bold text-gray-900 mb-0.5">
+                    Fits your operation
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Support the way your teams actually work instead of forcing them into rigid software processes.
+                  <p className="text-gray-600 leading-relaxed">
+                    Software designed around how your teams, approvals, systems, and business rules actually work.
                   </p>
                 </div>
               </div>
 
-              {/* Item 2 */}
-              <div className="pt-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
-                  <Network size={20} />
+              {/* Point 2 */}
+              <div className="pt-4 flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
+                  <Network size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1">
-                    Connected operations
+                  <h3 className="text-base font-bold text-gray-900 mb-0.5">
+                    Connects your systems
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Bring systems, data, approvals, and teams into one coordinated operational flow.
+                  <p className="text-gray-600 leading-relaxed">
+                    Bring applications, data, people, and workflows into one coordinated operational environment.
                   </p>
                 </div>
               </div>
 
-              {/* Item 3 */}
-              <div className="pt-6 flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
-                  <Boxes size={20} />
+              {/* Point 3 */}
+              <div className="pt-4 flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-[#fbeaec] text-[#df012a] flex items-center justify-center flex-shrink-0 border border-[#df012a]/20">
+                  <Boxes size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-gray-900 mb-1">
-                    Built to evolve
+                  <h3 className="text-base font-bold text-gray-900 mb-0.5">
+                    Evolves with your business
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Create a modular foundation that can adapt as your organisation and requirements grow.
+                  <p className="text-gray-600 leading-relaxed">
+                    Create a flexible foundation that can adapt as processes, requirements, and operations change.
                   </p>
                 </div>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* ─── RIGHT WORKFLOW VISUAL CANVAS (~62% WIDTH ON DESKTOP) ─── */}
+          {/* ─── RIGHT WORKFLOW VISUAL CANVAS (~58% WIDTH ON DESKTOP) ─── */}
           <motion.div
             className="lg:col-span-7"
             initial={prefersReducedMotion ? false : "hidden"}
@@ -156,133 +156,133 @@ export function WhyCustomSoftwareSection() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white border border-gray-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-gray-200/50 relative overflow-hidden">
+            <div className="bg-white border border-gray-200/90 rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xl shadow-gray-200/50 relative overflow-hidden">
               
               {/* Canvas Header */}
-              <div className="text-center max-w-lg mx-auto mb-8 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 tracking-tight">
-                  The difference is in the workflow
+              <div className="text-center max-w-lg mx-auto mb-6 sm:mb-7">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1 tracking-tight">
+                  From disconnected workarounds to one coordinated operation.
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 font-normal leading-relaxed">
-                  From manual workarounds to one coordinated operating flow.
+                <p className="text-gray-600 font-normal leading-relaxed">
+                  Custom software connects your people, processes, data, and systems around the way your business actually works.
                 </p>
               </div>
 
               {/* ─── LANE 1: OFF-THE-SHELF WORKFLOW ─── */}
-              <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-gray-500 block mb-1">
+              <div className="space-y-3">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-1">
                   OFF-THE-SHELF WORKFLOW
                 </span>
 
                 {/* Nodes Sequence */}
-                <div className="relative py-2">
+                <div className="relative py-1">
                   {/* SVG Dash Connector (Desktop) */}
                   <svg className="absolute inset-0 w-full h-full pointer-events-none hidden sm:block" aria-hidden="true">
                     <line
                       x1="8%"
-                      y1="35%"
+                      y1="32%"
                       x2="92%"
-                      y2="35%"
+                      y2="32%"
                       stroke="#d1d5db"
                       strokeWidth="2"
                       strokeDasharray="6 6"
                     />
                   </svg>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 relative z-10">
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 relative z-10">
                     {/* Node 1 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-sm">
-                        <MessageSquare size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-xs">
+                        <MessageSquare size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Customer<br />Request</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Customer<br />Request</span>
                     </motion.div>
 
                     {/* Node 2 + Warning badge */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2 relative">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-50/50 border border-emerald-200/60 text-emerald-700 flex items-center justify-center shadow-sm">
-                        <FileSpreadsheet size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5 relative">
+                      <div className="w-11 h-11 rounded-2xl bg-emerald-50/50 border border-emerald-200/60 text-emerald-700 flex items-center justify-center shadow-xs">
+                        <FileSpreadsheet size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Spreadsheet<br />Handoff</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Spreadsheet<br />Tracking</span>
 
                       {/* Red Warning Marker 1 */}
-                      <div className="absolute -right-2 top-3 hidden sm:flex w-5 h-5 rounded-full bg-[#df012a] text-white items-center justify-center text-[10px] font-bold z-20 shadow-sm">
+                      <div className="absolute -right-2 top-2.5 hidden sm:flex w-4.5 h-4.5 rounded-full bg-[#df012a] text-white items-center justify-center text-[10px] font-bold z-20 shadow-xs">
                         !
                       </div>
                     </motion.div>
 
                     {/* Node 3 + Warning badge */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2 relative">
-                      <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-sm">
-                        <Mail size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5 relative">
+                      <div className="w-11 h-11 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-xs">
+                        <Mail size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Email<br />Approval</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Manual Email<br />Approval</span>
 
                       {/* Red Warning Marker 2 */}
-                      <div className="absolute -right-2 top-3 hidden sm:flex w-5 h-5 rounded-full bg-[#df012a] text-white items-center justify-center text-[10px] font-bold z-20 shadow-sm">
+                      <div className="absolute -right-2 top-2.5 hidden sm:flex w-4.5 h-4.5 rounded-full bg-[#df012a] text-white items-center justify-center text-[10px] font-bold z-20 shadow-xs">
                         !
                       </div>
                     </motion.div>
 
                     {/* Node 4 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-sm">
-                        <Copy size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-xs">
+                        <Copy size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Duplicate<br />Data Entry</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Repeated Data<br />Entry</span>
                     </motion.div>
 
                     {/* Node 5 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2 col-span-2 sm:col-span-1">
-                      <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-sm">
-                        <Clock size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5 col-span-2 sm:col-span-1">
+                      <div className="w-11 h-11 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 flex items-center justify-center shadow-xs">
+                        <Clock size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Delayed<br />Reporting</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Delayed<br />Visibility</span>
                     </motion.div>
                   </div>
                 </div>
 
                 {/* Status Pills Lane 1 */}
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-3 px-4 rounded-2xl bg-gray-100/70 border border-gray-200/70 text-xs sm:text-sm font-medium text-gray-700">
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 py-2 px-3.5 rounded-2xl bg-gray-100/70 border border-gray-200/70 text-xs font-medium text-gray-700">
                   <div className="flex items-center gap-1.5">
-                    <UserX size={15} className="text-rose-500" />
+                    <UserX size={14} className="text-rose-500" />
                     <span>Manual</span>
                   </div>
                   <span className="text-gray-300">•</span>
                   <div className="flex items-center gap-1.5">
-                    <Link2Off size={15} className="text-rose-500" />
+                    <Link2Off size={14} className="text-rose-500" />
                     <span>Disconnected</span>
                   </div>
                   <span className="text-gray-300">•</span>
                   <div className="flex items-center gap-1.5">
-                    <TrendingDown size={15} className="text-rose-500" />
+                    <TrendingDown size={14} className="text-rose-500" />
                     <span>Hard to scale</span>
                   </div>
                 </div>
               </div>
 
               {/* ─── MIDDLE SEPARATOR ─── */}
-              <div className="my-8 flex items-center justify-center gap-4 border-y border-dashed border-gray-200 py-3.5">
-                <span className="text-[#df012a] font-bold text-xs sm:text-sm tracking-wide">
+              <div className="my-4 flex items-center justify-center gap-4 border-y border-dashed border-gray-200 py-2">
+                <span className="text-[#df012a] font-bold text-xs tracking-wide">
                   Designed around your operation
                 </span>
               </div>
 
               {/* ─── LANE 2: CUSTOM SOFTWARE WORKFLOW ─── */}
-              <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#df012a] block mb-1">
+              <div className="space-y-3">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#df012a] block mb-1">
                   CUSTOM SOFTWARE WORKFLOW
                 </span>
 
                 {/* Nodes Sequence */}
-                <div className="relative py-2">
+                <div className="relative py-1">
                   {/* SVG Solid Red Animated Pulse Line (Desktop) */}
                   <svg className="absolute inset-0 w-full h-full pointer-events-none hidden sm:block" aria-hidden="true">
                     <line
                       x1="8%"
-                      y1="35%"
+                      y1="32%"
                       x2="92%"
-                      y2="35%"
+                      y2="32%"
                       stroke="#df012a"
                       strokeWidth="2.5"
                       strokeDasharray="8 8"
@@ -291,78 +291,78 @@ export function WhyCustomSoftwareSection() {
                         <animate attributeName="stroke-dashoffset" from="16" to="0" dur="1.2s" repeatCount="indefinite" />
                       )}
                     </line>
-                    <circle cx="92%" cy="35%" r="4" fill="#df012a" />
+                    <circle cx="92%" cy="32%" r="4" fill="#df012a" />
                   </svg>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 relative z-10">
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 relative z-10">
                     {/* Node 1 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-sm">
-                        <MessageSquare size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-xs">
+                        <MessageSquare size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Customer<br />Request</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Customer<br />Request</span>
                     </motion.div>
 
                     {/* Node 2 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-sm">
-                        <Workflow size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-xs">
+                        <Workflow size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Intelligent<br />Routing</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Work Routed<br />Automatically</span>
                     </motion.div>
 
                     {/* Node 3 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-sm">
-                        <ShieldCheck size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-xs">
+                        <ShieldCheck size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Role-Based<br />Approval</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Approval by the<br />Right Person</span>
                     </motion.div>
 
                     {/* Node 4 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2">
-                      <div className="w-12 h-12 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-sm">
-                        <RefreshCw size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5">
+                      <div className="w-11 h-11 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-xs">
+                        <RefreshCw size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Automatic<br />System Sync</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Systems Updated<br />Automatically</span>
                     </motion.div>
 
                     {/* Node 5 */}
-                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-2 col-span-2 sm:col-span-1">
-                      <div className="w-12 h-12 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-sm">
-                        <TrendingUp size={22} />
+                    <motion.div variants={prefersReducedMotion ? undefined : nodeStagger} className="flex flex-col items-center text-center space-y-1.5 col-span-2 sm:col-span-1">
+                      <div className="w-11 h-11 rounded-2xl bg-[#fbeaec] border border-[#df012a]/30 text-[#df012a] flex items-center justify-center shadow-xs">
+                        <TrendingUp size={20} />
                       </div>
-                      <span className="text-xs sm:text-sm font-bold text-gray-900 leading-snug tracking-tight">Live<br />Operational Insights</span>
+                      <span className="text-xs font-bold text-gray-900 leading-snug tracking-tight">Real-Time Operational<br />Visibility</span>
                     </motion.div>
                   </div>
                 </div>
 
                 {/* Outcome Pills Lane 2 */}
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-3 px-4 rounded-2xl bg-[#fbeaec] border border-[#df012a]/20 text-xs sm:text-sm font-semibold text-gray-900">
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 py-2 px-3.5 rounded-2xl bg-[#fbeaec] border border-[#df012a]/20 text-xs font-semibold text-gray-900">
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle2 size={16} className="text-emerald-600" />
+                    <CheckCircle2 size={15} className="text-emerald-600" />
                     <span>Automated</span>
                   </div>
                   <span className="text-[#df012a]/30">•</span>
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle2 size={16} className="text-emerald-600" />
+                    <CheckCircle2 size={15} className="text-emerald-600" />
                     <span>Connected</span>
                   </div>
                   <span className="text-[#df012a]/30">•</span>
                   <div className="flex items-center gap-1.5">
-                    <CheckCircle2 size={16} className="text-emerald-600" />
+                    <CheckCircle2 size={15} className="text-emerald-600" />
                     <span>Built to evolve</span>
                   </div>
                 </div>
               </div>
 
               {/* ─── BOTTOM CALLOUT BOX ─── */}
-              <div className="mt-8 p-4 sm:p-5 rounded-2xl bg-[#fbeaec]/80 border border-[#df012a]/25 flex items-center justify-center gap-3.5 text-center sm:text-left">
-                <div className="w-10 h-10 rounded-xl bg-[#df012a]/15 text-[#df012a] flex items-center justify-center flex-shrink-0">
-                  <Rocket size={20} />
+              <div className="mt-5 p-3.5 sm:p-4 rounded-2xl bg-[#fbeaec]/80 border border-[#df012a]/25 flex items-center justify-center gap-3 text-center sm:text-left">
+                <div className="w-9 h-9 rounded-xl bg-[#df012a]/15 text-[#df012a] flex items-center justify-center flex-shrink-0">
+                  <Rocket size={18} />
                 </div>
-                <p className="text-sm sm:text-base font-bold text-gray-900">
-                  Fewer workarounds. One coordinated operational flow.
+                <p className="font-bold text-gray-900">
+                  One connected workflow. Less manual work. Better operational visibility.
                 </p>
               </div>
 

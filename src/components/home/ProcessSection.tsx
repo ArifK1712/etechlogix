@@ -23,42 +23,42 @@ const stations: AssemblyStation[] = [
     num: "01",
     name: "DISCOVER",
     title: "Discover & Align",
-    description: "Understand the business goals, users, workflows, existing systems, operational challenges, risks, security needs, and success criteria.",
-    deliverable: "Discovery & requirements roadmap",
+    description: "Understand business operations, users, systems, constraints, and the measurable goals the software needs to achieve.",
+    deliverable: "Discovery report & requirements roadmap",
     icon: Search,
   },
   {
     num: "02",
     name: "DESIGN",
-    title: "Architect & Plan",
-    description: "Define the product experience, technical architecture, integrations, data flows, AI responsibilities, security approach, and phased delivery roadmap.",
-    deliverable: "Technical architecture blueprint",
+    title: "Design & Validate",
+    description: "Define workflows, architecture, product experience, and integration requirements before full development begins.",
+    deliverable: "Architecture blueprint & validated design",
     icon: PenTool,
   },
   {
     num: "03",
     name: "BUILD",
-    title: "Engineer & Validate",
-    description: "Deliver in controlled iterations with regular demonstrations, testing, documentation, stakeholder reviews, and transparent progress.",
+    title: "Build & Integrate",
+    description: "Develop the software in controlled phases while connecting required platforms, APIs, data sources, and business rules.",
     deliverable: "Production-ready software build",
     icon: Hammer,
   },
   {
     num: "04",
-    name: "IMPROVE",
-    title: "Evolve & Optimise",
-    description: "Monitor performance, support users, refine workflows, modernise capabilities, and evolve the platform as business needs change.",
-    deliverable: "Continuous optimisation & telemetry",
+    name: "EVOLVE",
+    title: "Launch & Evolve",
+    description: "Deploy safely, support team adoption, measure operational performance, and improve the platform as requirements change.",
+    deliverable: "Live deployment & improvement plan",
     icon: TrendingUp,
   },
 ];
 
 export function ProcessSection() {
   const [activeStationIdx, setActiveStationIdx] = useState(0);
-  const [prefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const prefersReducedMotion =
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false;
   const sectionRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const redSignalRef = useRef<SVGCircleElement>(null);
@@ -128,7 +128,7 @@ export function ProcessSection() {
             <span className="text-[#df012a]">complex digital products.</span>
           </h2>
           <p className="text-white/65 leading-relaxed max-w-3xl">
-            We combine business understanding, product strategy, enterprise architecture, and iterative engineering to deliver reliable outcomes with clear visibility throughout the engagement.
+            A practical four-stage approach used across enterprise software, AI workflow, and integration projects — with clear visibility, defined milestones, and controlled delivery from initial discovery through to live operations.
           </p>
         </div>
 

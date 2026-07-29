@@ -12,23 +12,23 @@ interface StartupStage {
 const startupStages: StartupStage[] = [
   {
     num: "01",
-    stageName: "STAGE 01 — CONCEPT",
-    title: "Prototype",
-    description: "Define the concept, user journeys, product experience, and core value proposition.",
-    deliverable: "Clickable UX/UI prototype & pitch visual",
+    stageName: "STAGE 01 — DEFINE",
+    title: "Define",
+    description: "Clarify the product idea, target audience, core user workflow, and the functionality that matters most before any design or development begins.",
+    deliverable: "Product scope & user workflow map",
   },
   {
     num: "02",
-    stageName: "STAGE 02 — VALIDATION",
-    title: "Functional Demo",
-    description: "Build a working product experience that founders can demonstrate to customers, partners, and investors.",
-    deliverable: "Working interactive demo with live data",
+    stageName: "STAGE 02 — PROTOTYPE",
+    title: "Prototype",
+    description: "Create an interactive and realistic product experience that can be used for validation, investor demonstrations, and early customer conversations.",
+    deliverable: "Clickable prototype & pitch-ready visual",
   },
   {
     num: "03",
-    stageName: "STAGE 03 — LAUNCH",
-    title: "MVP",
-    description: "Develop a scalable product foundation ready for early users, feedback, and future growth.",
+    stageName: "STAGE 03 — BUILD",
+    title: "Build",
+    description: "Turn the validated concept into a functional and scalable product foundation ready for early users, real feedback, and continued development.",
     deliverable: "Production-ready software & cloud setup",
   },
 ];
@@ -43,10 +43,10 @@ export function StartupSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ─── SECTION HEADER (Centered) ─── */}
-        <div className="mb-12 lg:mb-16 max-w-[950px] mx-auto text-center">
+        <div className="mb-12 lg:mb-14 max-w-[950px] mx-auto text-center">
           <span className="inline-flex items-center justify-center gap-2 text-[#df012a] text-xs font-bold uppercase tracking-[0.14em] mb-3">
             <span className="w-5 h-px bg-[#df012a]" />
-            FOR STARTUPS
+            STARTUP PROTOTYPE DEVELOPMENT
             <span className="w-5 h-px bg-[#df012a]" />
           </span>
           <h2
@@ -56,18 +56,9 @@ export function StartupSection() {
             Turn your idea into a product{" "}
             <span className="text-[#df012a]">investors can experience.</span>
           </h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto mb-6">
-            We help founders move from concept to clickable prototype, functional demo, and scalable MVP—creating a credible product experience for customer validation, partner discussions, and fundraising presentations.
+          <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            We help founders move from concept to a working product experience — designed for validation, customer conversations, and fundraising.
           </p>
-
-          {/* Compact Proof Statement */}
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#fbeaec] border border-[#df012a]/20 text-xs sm:text-sm font-semibold text-gray-900 shadow-sm max-w-2xl mx-auto">
-            <span className="w-2 h-2 rounded-full bg-[#df012a] animate-pulse flex-shrink-0" />
-            <span>
-              Helping startups enter fundraising conversations with a{" "}
-              <strong className="text-[#df012a]">working product</strong> instead of only a presentation.
-            </span>
-          </div>
         </div>
 
         {/* ─── THREE-STAGE PROGRESSION GRID ─── */}
@@ -108,19 +99,15 @@ export function StartupSection() {
           ))}
         </div>
 
-        {/* ─── CTAs ─── */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* ─── CTA ─── */}
+        <div className="mt-10 text-center">
           <Link
             href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-black text-white text-sm font-bold rounded-xl hover:bg-[#df012a] transition-all duration-200 shadow-md hover:gap-3"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#df012a] hover:gap-3 transition-all duration-200 group"
+            aria-label="Discuss your startup product idea"
           >
-            Build Your Startup Product <ArrowRight size={16} />
-          </Link>
-          <Link
-            href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent text-black text-sm font-bold rounded-xl border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
-          >
-            Discuss Your Idea
+            Discuss your product idea
+            <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
 
